@@ -1,7 +1,7 @@
 const { UserModel } = require("../models/user.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const fs = require("fs");
+const fs = require("@cyclic.sh/s3fs");
 const path = require("path");
 
 // Checking the passoword and assigning the token
