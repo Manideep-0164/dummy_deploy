@@ -2,7 +2,7 @@ const { UserModel } = require("../models/user.model");
 const adminRouter = require("express").Router();
 
 
-adminRouter.get("/get",async(req,res)=>{            // Get all Users
+adminRouter.get("/getuser",async(req,res)=>{            // Get all Users
     try{
         // if(req.role == "explorer"){
             const users = await UserModel.find();
@@ -16,7 +16,7 @@ adminRouter.get("/get",async(req,res)=>{            // Get all Users
 });
 
 
-adminRouter.get("/get/:id",async(req,res)=>{        // Get a User
+adminRouter.get("/getuser/:id",async(req,res)=>{        // Get a User
     const {id} = req.params;
     try{
         // if(req.role == "explorer"){
@@ -31,7 +31,7 @@ adminRouter.get("/get/:id",async(req,res)=>{        // Get a User
 });
 
 
-adminRouter.put("/update/:id",async(req,res)=>{       // Update a user's Data
+adminRouter.put("/updateuser/:id",async(req,res)=>{       // Update a user's Data
     const {id} = req.params;
     const data = req.body;
     try{
@@ -52,7 +52,7 @@ adminRouter.put("/update/:id",async(req,res)=>{       // Update a user's Data
 
 
 
-adminRouter.delete("/delete/:id",async(req,res)=>{       // Delete a user's Data
+adminRouter.delete("/deleteuser/:id",async(req,res)=>{       // Delete a user's Data
     const {id} = req.params;
     try{
         if(req.role == "admin"){

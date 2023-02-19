@@ -16,7 +16,7 @@ app.get("/",(req,res)=>{
 
 app.use("/user",userRouter);
 app.use(validateUser);
-app.use("/user",adminRouter)
+app.use("",adminRouter)
 
 
 // Running the server
