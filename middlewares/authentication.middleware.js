@@ -1,8 +1,8 @@
 const { UserModel } = require("../models/user.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const fs = require("fs");
 const path = require("path");
+const fs = require("@cyclic.sh/s3fs");
 
 // Checking the passoword and assigning the token
 
@@ -56,8 +56,12 @@ const validateUser = (req,res,next)=>{
 // Logger to log the username and role
 
 const userLogger = (req,res,next)=>{
+    let arr = [];
     const log = `UserName: ${req.userName} | Role: ${req.userRole}\n`;
-    fs.appendFileSync(`${__dirname}/log.txt`,log,"utf-8");
+    let data = fs.readFileSync(`${__dirname}/log.txt`,"utf-8") || "";
+    arr.push(data);
+    arr.push(log);
+    fs.writeFileSync(`${__dirname}/log.txt`,arr.join("\n"),"utf-8");
     next()
 }
 
