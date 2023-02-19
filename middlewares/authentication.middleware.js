@@ -58,7 +58,7 @@ const validateUser = (req,res,next)=>{
 const userLogger = (req,res,next)=>{
     const log = `UserName: ${req.userName} | Role: ${req.userRole}\n`;
     next()
-    fs.appendFileSync(path.join(__dirname, "../log.txt"),log,"utf-8");
+    fs.writeFileSync(path.join(__dirname, "../log.txt"),log,"utf-8");
 }
 
 module.exports = {
