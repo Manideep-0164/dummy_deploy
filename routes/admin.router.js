@@ -39,7 +39,7 @@ adminRouter.put("/updateuser/:id",async(req,res)=>{       // Update a user's Dat
             const user = await UserModel.find({_id:id});
             if(user.length==0) res.send({"msg":"No Data"})
             else {
-                await UserModel.findByIdAndUpdate({_id:id},data);
+                await UserModel.findOneAndReplace({_id:id},data);
                 res.send({"msg":"Successfully Updated the user Data"})
             }
         }
